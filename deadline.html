@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deadline Management System</title>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9fafb;
+    }
+    header {
+      background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1500&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    header div {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 8px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    nav {
+      background-color: #2563eb;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #dbeafe;
+    }
+    section {
+      padding: 32px;
+      scroll-margin-top: 80px;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+    .form-container {
+      background-color: white;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin-bottom: 32px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border 0.3s;
+    }
+    input:focus, textarea:focus {
+      border-color: #2563eb;
+      outline: none;
+    }
+    button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.3s;
+    }
+    button:hover {
+      background-color: #1e40af;
+      transform: scale(1.05);
+    }
+    aside {
+      display: none;
+    }
+    @media (min-width: 1024px) {
+      aside {
+        display: block;
+        position: fixed;
+        top: 18rem;
+        right: 16px;
+        width: 320px;
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        border: 1px solid #93c5fd;
+        z-index: 40;
+        transition: transform 0.3s;
+      }
+      aside:hover {
+        transform: scale(1.02);
+      }
+      aside h2 {
+        text-align: center;
+        font-weight: bold;
+        background: linear-gradient(to right, #2563eb, #9333ea, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+      }
+      aside ul {
+        padding-left: 16px;
+        list-style: disc;
+      }
+      aside li {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+        cursor: pointer;
+      }
+      aside li:hover {
+        color: #dc2626;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div><h1>Deadline Management System</h1></div>
+  </header>
+  <nav>
+    <a href="#students">Students</a>
+    <a href="#branches">Branches</a>
+    <a href="#semesters">Semesters</a>
+    <a href="#subjects">Subjects</a>
+    <a href="#assignments">Assignments</a>
+  </nav>
+
+  <section id="students">
+    <h2 style="color: #1d4ed8;">👨‍🎓 Manage Students</h2>
+    <form class="form-container" action="students.php" method="POST">
+      <input name="name" placeholder="Name" required />
+      <input name="email" placeholder="Email" required />
+      <input name="branch_id" placeholder="Branch ID" required />
+      <input name="semester_id" placeholder="Semester ID" required />
+      <button type="submit">Add Student</button>
+    </form>
+  </section>
+
+  <section id="branches">
+    <h2 style="color: #15803d;">🏢 Manage Branches</h2>
+    <form class="form-container" action="branches.php" method="POST">
+      <input name="branchName" placeholder="Branch Name" required />
+      <button type="submit">Add Branch</button>
+    </form>
+  </section>
+
+  <section id="semesters">
+    <h2 style="color: #7e22ce;">📚 Manage Semesters</h2>
+    <form class="form-container" action="semesters.php" method="POST">
+      <input name="semesterName" placeholder="Semester Name" required />
+      <button type="submit">Add Semester</button>
+    </form>
+  </section>
+
+  <section id="subjects">
+    <h2 style="color: #ca8a04;">📖 Manage Subjects</h2>
+    <form class="form-container" action="subjects.php" method="POST">
+      <input name="subjectName" placeholder="Subject Name" required />
+      <button type="submit">Add Subject</button>
+    </form>
+  </section>
+
+  <section id="assignments">
+    <h2 style="color: #dc2626;">📝 Manage Assignments</h2>
+    <form class="form-container" action="assignments.php" method="POST">
+      <input name="assignmentTitle" placeholder="Assignment Title" required />
+      <textarea name="assignmentDescription" placeholder="Assignment Description" required></textarea>
+      <input type="date" name="assignmentDeadline" required />
+      <button type="submit">Add Assignment</button>
+    </form>
+  </section>
+
+  <aside>
+    <h2>✨ Dashboard</h2>
+    <div>
+      <h3 style="color: #2563eb; font-weight: bold;">📅 Upcoming Deadlines</h3>
+      <ul>
+        <li>📘 Math Assignment – <span style="color: red;">Apr 20</span></li>
+        <li>🧪 Physics Report – <span style="color: #facc15;">Apr 22</span></li>
+        <li>💻 Coding Project – <span style="color: #10b981;">Apr 25</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color: #9333ea; font-weight: bold;">💡 Quick Tips</h3>
+      <ul>
+        <li>Set reminders for every task</li>
+        <li>Update assignments weekly</li>
+        <li>Organize by subject</li>
+      </ul>
+    </div>
+    <div style="border-top: 1px dashed #ccc; padding-top: 10px; font-style: italic;">
+      “Success is the sum of small efforts, repeated day-in and day-out.”<br/>
+      <span style="display: block; text-align: right; margin-top: 6px;">— Robert Collier</span>
+    </div>
+  </aside>
+</body>
+</html>
+
